@@ -2,6 +2,7 @@ package com.edwardsterkin;
 
 public class Event {
 
+	private int id; 
 	private String description;
 	private float lat;
     private float lng; 
@@ -37,6 +38,14 @@ public class Event {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+	
+	public int getId(){
+		return id;
+	}
+	
+	public void setId(int id){
+		this.id = id;
 	}
 
 

@@ -35,7 +35,10 @@ public class EventsFragment extends ListFragment {
 	public void onListItemClick(ListView lv, View v, int position, long id) {
 
 		super.onListItemClick(lv, v, position, id);
-		((EventsActivity) getActivity()).showMarker(position);
+		Event thisEvent = (Event) lv.getItemAtPosition(position);	
+		System.out.println("EventsFrag item id clicked " + thisEvent.getId());
+		((EventsActivity) getActivity()).showMarker(thisEvent.getId());
+		
 	}
 
 	public EventAdapter getAdapter() {
@@ -84,8 +87,8 @@ public class EventsFragment extends ListFragment {
 			List<?> eventsJson = listFromJsonSorted(jObject);
 			
 			if (eventsJson != null) {
+				int id = -1;
 				for (Object o : eventsJson) {
-
 					JSONArray eventValues = (JSONArray) o;
 					Event event = new Event();
 					try {
@@ -93,6 +96,7 @@ public class EventsFragment extends ListFragment {
 						event.setDate(eventValues.getString(3));
 						event.setLat(Float.parseFloat(eventValues.getString(1)));
 						event.setLng(Float.parseFloat(eventValues.getString(2)));
+						event.setId(++id);
 					} catch (JSONException jsonException) {
 						jsonException.printStackTrace();
 					}

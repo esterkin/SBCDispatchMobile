@@ -78,8 +78,7 @@ public class EventAdapter extends ArrayAdapter<Event> implements Filterable {
 	@Override
     public Filter getFilter() {
         Filter filter = new Filter() {
-
-     
+  
             @SuppressWarnings("unchecked")
 			@Override
             protected void publishResults(CharSequence constraint,FilterResults results) {
@@ -106,7 +105,7 @@ public class EventAdapter extends ArrayAdapter<Event> implements Filterable {
                     constraint = constraint.toString().toLowerCase(Locale.getDefault());
                     for (int i = 0; i < originalEvents.size(); i++) {
                         Event data = originalEvents.get(i);
-                        if (data.toString().toLowerCase().contains(constraint.toString())) {
+                        if (data.toString().toLowerCase(Locale.getDefault()).contains(constraint.toString())) {
                             FilteredArrList.add(data);
                         }
                     }
