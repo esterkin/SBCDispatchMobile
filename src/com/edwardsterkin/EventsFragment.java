@@ -65,7 +65,7 @@ public class EventsFragment extends ListFragment {
 		@Override
 		protected Void doInBackground(Void... params) {
 
-			jsonString = getJSON("http://ivalertmap.appspot.com/json");
+			jsonString = getJSON("http://ivalertmap.appspot.com/api/events/past/7");
 			return null;
 		}
 
